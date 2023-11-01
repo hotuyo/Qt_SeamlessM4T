@@ -1,6 +1,6 @@
 # Qt and SeamlessM4T
 
-使用flask框架在服务器端开启SeamlessM4T大模型
+Use the flask framework to enable the SeamlessM4T large model on the server.
 
 ```python
 from flask import Flask, request
