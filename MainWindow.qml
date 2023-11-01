@@ -155,7 +155,6 @@ Item {
     Connections {
         target: history_record_button
         onClicked: {
-            console.log("测试")
             text_analyse.OpenDialog()
         }
     }

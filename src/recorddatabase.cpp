@@ -10,7 +10,6 @@ void RecordDataBase::InitDataBase() {
   database_path_ = appDirPath + "/record.db3";
   database_.setDatabaseName(database_path_);
   if (!database_.open()) {
-    qDebug() << "无法打开数据库: " << database_.lastError().text();
     return;
   } else {
     if (!database_.tables().contains("translate_records")) {
@@ -22,16 +21,11 @@ void RecordDataBase::InitDataBase() {
           "src_text TEXT,"
           "tar TEXT, "
           "tar_text TEXT)";
-      if (query.exec(create_table_translate_records)) {
-        qDebug() << "成功创建 translate_records 表";
-      } else {
-        qDebug() << "创建表translate_records 失败: "
-                 << query.lastError().text();
-      }
+    query.exec(create_table_translate_records);
+
       query.clear();
       database_.close();
     } else {
-      qDebug() << "translate_records 表已存在";
       database_.close();
     }
   }
@@ -84,8 +78,6 @@ bool RecordDataBase::InsertTranslateRecord(const QString& src,
   query.bindValue(":src_text", src_text);
   query.bindValue(":tar_text", tar_text);
   query.bindValue(":timestamp", timestamp);
-  qDebug() << "73:" << src << tar << src_text << tar_text << timestamp;
-
   if (query.exec()) {
     return true;
   } else {
@@ -109,8 +101,6 @@ QList<TranslateRecord> RecordDataBase::GetTranslateRecords() {
       record.tar_text = query.value("tar_text").toString();
       translate_records.append(record);
     }
-  } else {
-    qDebug() << "查询历史记录失败:" << query.lastError().text();
   }
   database_.close();
   return translate_records;
@@ -124,11 +114,9 @@ bool RecordDataBase::ClearTranslateRecords() {
   QSqlQuery query;
   query.prepare("DELETE FROM translate_records");
   if (query.exec()) {
-    qDebug() << "成功清空 translate_records 表";
     database_.close();
     return true;
   } else {
-    qDebug() << "清空表translate_records失败: " << query.lastError().text();
     database_.close();
     return false;
   }

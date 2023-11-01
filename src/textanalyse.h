@@ -35,6 +35,7 @@ class TextAnalyse: public QObject
 
  public slots:
   void ClearTranslateRecodes();
+
  private:
   RecordDataBase record;
   QVariantList m_history_records;
