@@ -24,11 +24,11 @@ Item {
                     model: ListModel {
                         id: src_model
                         ListElement {
-                            key: "中文"
+                            key: "cmn"
                             value: "cmn"
                         }
                         ListElement {
-                            key: "英文"
+                            key: "eng"
                             value: "eng"
                         }
                     }
@@ -55,11 +55,11 @@ Item {
                     model: ListModel {
                         id: tar_model
                         ListElement {
-                            key: "中文"
+                            key: "cmn"
                             value: "cmn"
                         }
                         ListElement {
-                            key: "英文"
+                            key: "eng"
                             value: "eng"
                         }
                     }
@@ -68,7 +68,7 @@ Item {
                     id: history_record_button
                     width: 100
                     height: 30
-                    text: "历史记录"
+                    text: "history"
                 }
             }
             ScrollView {
@@ -78,7 +78,7 @@ Item {
                 TextArea {
                     id: translate_text
                     anchors.fill: parent
-                    placeholderText: qsTr("输入需要翻译的内容...")
+                    placeholderText: qsTr("Enter the content to be translated...")
                     wrapMode: Text.WordWrap
                     font.pixelSize: 20
                 }
@@ -88,13 +88,13 @@ Item {
                 height: 50
                 Button {
                     id: clear_button
-                    text: "清空"
+                    text: "clean"
                     width: 70
                     height: 40
                 }
                 Button {
                     id: translate_button
-                    text: "翻译"
+                    text: "translate"
                     width: 70
                     height: 40
                     focus: true

@@ -1,4 +1,4 @@
-// 用来数据库操作的类
+// database for record translate history
 
 #ifndef RECORDDATABASE_H
 #define RECORDDATABASE_H
@@ -23,8 +23,6 @@ class RecordDataBase
                              const QString& timestamp);
   QList<TranslateRecord> GetTranslateRecords();
   bool ClearTranslateRecords();
-//  bool InsertItemRecord(const QString& item_uuid, const QString& item_title);
-//  bool DeleteItemRecord(const QString& item_uuid);
   bool CloseDatabase();
  private:
   void InitDataBase();

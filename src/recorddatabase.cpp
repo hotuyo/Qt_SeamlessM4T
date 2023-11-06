@@ -30,8 +30,8 @@ void RecordDataBase::InitDataBase() {
     }
   }
   if (!OpenDatabase()) {
-    QMessageBox::warning(nullptr, "警告",
-                         "无法打开数据库 recorddatabase.cpp 44",
+    QMessageBox::warning(nullptr, "warning",
+                         "Cannot open database",
                          QMessageBox::Ok);
     return;
   }
@@ -43,8 +43,8 @@ bool RecordDataBase::OpenDatabase() {
   } else if (database_.open()) {
     return true;
   } else {
-    QMessageBox::information(nullptr, "通知",
-                             "无法打开数据库 recorddatabase.cpp 48");
+    QMessageBox::warning(nullptr, "Warning",
+                             "Cannot open database");
     return false;
   }
 }
@@ -65,8 +65,8 @@ bool RecordDataBase::InsertTranslateRecord(const QString& src,
                                            const QString& timestamp) {
   database_.open();
   if (!database_.isOpen()) {
-    QMessageBox::information(nullptr, "通知",
-                             "无法打开数据库 recorddatabase.cpp 68");
+    QMessageBox::warning(nullptr, "Warning",
+                             "Cannot open database");
     return false;
   }
   QSqlQuery query;
